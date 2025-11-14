@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Путешествия по России</title>
+    <style>
+      
+        header {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        main {
+            padding: 40px 0;
+        }
+        
+        section {
+            margin-bottom: 60px;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #1a3a5f;
+        }
+        
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 28px;
+            border-bottom: 2px solid #1a3a5f;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 22px;
+            margin-top: 20px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .about {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .destinations-list {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .destinations-list li {
+            margin-bottom: 10px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #1a3a5f;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: bold;
+        }
+        
+        .gallery-caption {
+            padding: 15px;
+        }
+        
+        .planning-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn {
+            background-color: #1a3a5f;
+            color: white;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0f2640;
+        }
+        
+        .reset-btn {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .reset-btn:hover {
+            background-color: #5a6268;
+        }
+        
+        
+        .contacts {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .contact-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .contact-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .contact-list li:before {
+            content: "•";
+            color: #1a3a5f;
+            position: absolute;
+            left: 0;
+        }
+        
+        footer {
+            background-color: #1a3a5f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">Путешествия по России</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">О проекте</a></li>
+                    <li><a href="#destinations">Направления</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#planning">Планирование</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about">
+            <h1>О проекте</h1>
+            <div class="about">
+                <p>Добро пожаловать на сайт "Путешествия по России"! Здесь вы найдете информацию о самых интересных местах нашей страны.</p>
+                <p>Россия - самая большая страна в мире, и на ее территории расположено множество уникальных природных и культурных достопримечательностей.</p>
+            </div>
+        </section>
+
+        <section id="destinations">
+            <h2>Популярные направления</h2>
+            <p>Топ-5 направлений для путешествий по России:</p>
+            <ol class="destinations-list">
+                <li>Озеро Байкал</li>
+                <li>Камчатка</li>
+                <li>Золотое кольцо России</li>
+                <li>Алтай</li>
+                <li>Калининградская область</li>
+            </ol>
+
+            <h3>Сравнение направлений</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Направление</th>
+                        <th>Лучшее время для посещения</th>
+                        <th>Средняя стоимость поездки</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Озеро Байкал</td>
+                        <td>Июль-август</td>
+                        <td>30 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Камчатка</td>
+                        <td>Июль-сентябрь</td>
+                        <td>70 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Золотое кольцо</td>
+                        <td>Май-сентябрь</td>
+                        <td>20 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <td>Алтай</td>
+                        <td>Июнь-август</td>
+                        <td>25 000 руб.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="gallery">
+            <h2>Галерея</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img srcset="https://i.pinimg.com/originals/7d/73/07/7d7307961a238e1e8e7fd63d9107593b.jpg" height="300">
+                        <h3>Озеро Байкал</h3>
+                        <p>Озеро Байкал - самое глубокое озеро в мире</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                      <img srcset="https://kamgov.ru/assets/gallery_thumbnails/03/035a613ee6c5c10bbf51a7800d0d4f30.jpg_large" height="300">
+                        <h3>Камчатка</h3>
+                        <p>Камчатка - край вулканов и гейзеров</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img srcset="https://i.pinimg.com/736x/38/78/ab/3878aba55d0a9a4556302e317e762796.jpg" height="300">
+                        <h3>Алтай</h3>
+                        <p>Алтай - горный край с уникальной природой</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p>Больше фотографий вы можете найти на наших ресурсах:</p>
+            <ul class="destinations-list">
+                <li><h1><a href="https://yandex.ru/images/search?from=tabbar&text=%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%20%D0%BE%D0%B7%D0%B5%D1%80%D0%BE">Фото Байкала</a></h1></li>
+                 <li><h1><a href="https://yandex.ru/images/search?from=tabbar&text=%D0%BA%D0%B0%D0%BC%D1%87%D0%B0%D1%82%D0%BA%D0%B0%20%D1%84%D0%BE%D1%82%D0%BE">Фото Камчатки</a></h1></li>
+                 <li><h1><a href="https://yandex.ru/images/search?from=tabbar&text=%D0%B0%D0%BB%D1%82%D0%B0%D0%B9%20%D1%84%D0%BE%D1%82%D0%BE">Фото Алтая</a></h1></li>
+            </ul>
+        </section>
+
+        <section id="planning">
+            <h2>Планирование путешествия</h2>
+            <form class="planning-form">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="direction">Выберите направление:</label>
+                    <select id="direction" name="direction">
+                        <option value="">--Выберите направление--</option>
+                        <option value="baikal">Озеро Байкал</option>
+                        <option value="kamchatka">Камчатка</option>
+                        <option value="golden-ring">Золотое кольцо</option>
+                        <option value="altai">Алтай</option>
+                        <option value="kaliningrad">Калининградская область</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Тип путешествия:</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="individual" name="travel-type" value="individual">
+                            <label for="individual">Индивидуальное</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="group" name="travel-type" value="group">
+                            <label for="group">Групповое</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Дополнительные услуги:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="guide" name="services" value="guide">
+                            <label for="guide">Гид</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="transfer" name="services" value="transfer">
+                            <label for="transfer">Трансфер</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="insurance" name="services" value="insurance">
+                            <label for="insurance">Страховка</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Комментарии и пожелания:</label>
+                    <textarea id="comments" name="comments" rows="4"></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                    <button type="reset" class="reset-btn">Очистить форму</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <div class="contacts">
+                <p>Свяжитесь с нами для получения дополнительной информации:</p>
+                <ul class="contact-list">
+                    <li>Телефон: +7 (999) 123-45-67</li>
+                    <li>Email: info@travel-russia.ru</li>
+                    <li>Адрес: Москва, ул. Путешественников, д. 10</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Путешествия по России. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
